@@ -43,24 +43,32 @@ const CanvasEditor = ({ imageUrl, onClose }) => {
     let lastY = 0;
 
     const startDrawing = (e) => {
-      isDrawing = !isDrawing;
-      if (isDrawing) {
-        [lastX, lastY] = [e.clientX, e.clientY];
+      if (e.button !== 0) return;
+      if(isDrawing) {
+        isDrawing = false;
+        return;
       }
+      const rect = overlayCanvas.getBoundingClientRect();
+      isDrawing = true;
+      lastX = e.clientX - rect.left;
+      lastY = e.clientY - rect.top;
+      overlayCtx.beginPath();
     };
 
     const draw = (e) => {
       if (!isDrawing) return;
-      const currentX = e.clientX;
-      const currentY = e.clientY;
-      overlayCtx.beginPath();
+      const rect = overlayCanvas.getBoundingClientRect();
+      const currentX = e.clientX - rect.left;
+      const currentY = e.clientY - rect.top;
       overlayCtx.moveTo(lastX, lastY);
       overlayCtx.lineTo(currentX, currentY);
       overlayCtx.strokeStyle = brushSettings[brushType].color;
       overlayCtx.lineWidth = brushSettings[brushType].thickness;
       overlayCtx.lineCap = 'round';
       overlayCtx.lineJoin = 'round';
-      overlayCtx.stroke(); 
+      overlayCtx.stroke();
+      lastX = currentX;
+      lastY = currentY;
     };
 
     overlayCanvas.addEventListener('mousedown', startDrawing);
@@ -243,7 +251,7 @@ const CanvasEditor = ({ imageUrl, onClose }) => {
         </div>
       </div>
       <div className="canvas-content">
-        <canvas ref={canvasImgRef} style={{display: 'none'}}></canvas>
+        <canvas ref={canvasImgRef}></canvas>
         <canvas className="overlay-canvas"></canvas>
       </div>
     </div>
