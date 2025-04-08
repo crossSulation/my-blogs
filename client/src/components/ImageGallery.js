@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { getImageList, getImageMetadataByDimension } from '../api';
 import CanvasEditor from './CanvasEditor';
+import { DatePicker } from 'antd';
 import './ImageGallery.css'; // 新增样式文件
 
 const ImageGallery = () => {
@@ -36,6 +37,21 @@ const ImageGallery = () => {
     fetchImages();
   }, [filter]);
 
+  const [dateRange, setDateRange] = useState([null, null]);
+
+  const handleDateChange = (dates) => {
+    setDateRange(dates);
+    if (dates && dates[0] && dates[1]) {
+      const filteredImages = images.filter(image => {
+        const uploadDate = new Date(image.uploadDate);
+        return uploadDate >= dates[0] && uploadDate <= dates[1];
+      });
+      setImages(filteredImages);
+    } else {
+      fetchImages();
+    }
+  };
+
   const onFilerChange = useCallback(async (e) => {
     setFilter(e.target.value);
     const metadata = await getImageMetadataByDimension(e.target.value);
@@ -56,6 +72,16 @@ const ImageGallery = () => {
             </option>
           ))}
         </select>
+        {filter === 'size' && (
+          <div className="size-range">
+            <input type="range" min="0" max="10240" step="10" />
+          </div>
+        )}
+        {filter === 'uploadTime' && (
+          <div className="date-picker">
+            <DatePicker.RangePicker onChange={handleDateChange} />
+          </div>
+        )}
       </div>
       <div className="gallery-container">
         {(filter === 'all'
