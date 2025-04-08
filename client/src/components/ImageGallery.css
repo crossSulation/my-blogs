@@ -88,3 +88,8 @@
   max-height: 100%;
   border-radius: 8px;
 }
+
+.filter-container {
+  text-align: right;
+  margin-right: 20px;
+}

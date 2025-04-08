@@ -48,3 +48,15 @@ export const downloadImage = async (filename) => {
     throw error;
   }
 };
+
+export const getImageMetadataByDimension = async (dimension) => {
+  try {
+    const response = await api.get(`/gridfs/metadata-by-dimension/${dimension}`, {
+      responseType: 'json', // 以 JSON 形式接收响应
+    });
+    return await response.data;
+  } catch (error) {
+    console.error('Failed to fetch image metadata by dimension:', error);
+    throw error;
+  }
+};

@@ -2142,6 +2142,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/exif@npm:^0":
+  version: 0.6.5
+  resolution: "@types/exif@npm:0.6.5"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/bceb7cfc54eea895037105c1eda50ff24c9d325cb76d3c280b4d33ec99be5ecafb15cfcb20e743a5a7da395c3f19052c3107e0a1187f1afd09329552e339f38c
+  languageName: node
+  linkType: hard
+
 "@types/express-serve-static-core@npm:^5.0.0":
   version: 5.0.6
   resolution: "@types/express-serve-static-core@npm:5.0.6"
@@ -2253,7 +2262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.10.7":
+"@types/node@npm:*, @types/node@npm:^22.14.0":
   version: 22.14.0
   resolution: "@types/node@npm:22.14.0"
   dependencies:
@@ -3813,6 +3822,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debug@npm:^2.2":
+  version: 2.6.9
+  resolution: "debug@npm:2.6.9"
+  dependencies:
+    ms: "npm:2.0.0"
+  checksum: 10c0/121908fb839f7801180b69a7e218a40b5a0b718813b886b7d6bdb82001b931c938e2941d1e4450f33a1b1df1da653f5f7a0440c197f29fbf8a6e9d45ff6ef589
+  languageName: node
+  linkType: hard
+
 "decompress-response@npm:^6.0.0":
   version: 6.0.0
   resolution: "decompress-response@npm:6.0.0"
@@ -4316,6 +4334,22 @@ __metadata:
     signal-exit: "npm:^3.0.3"
     strip-final-newline: "npm:^2.0.0"
   checksum: 10c0/c8e615235e8de4c5addf2fa4c3da3e3aa59ce975a3e83533b4f6a71750fb816a2e79610dc5f1799b6e28976c9ae86747a36a606655bf8cb414a74d8d507b304f
+  languageName: node
+  linkType: hard
+
+"exif-parser@npm:^0.1.12":
+  version: 0.1.12
+  resolution: "exif-parser@npm:0.1.12"
+  checksum: 10c0/ef1df84edbba50621fcfe19510c8db3ddd9e7fb374459d3f77c9256c24584767c7fb4cf1b15aef46e87a06528d3c48e44de02cecc314656d22a5cf954a0e7192
+  languageName: node
+  linkType: hard
+
+"exif@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "exif@npm:0.6.0"
+  dependencies:
+    debug: "npm:^2.2"
+  checksum: 10c0/c131603654bfede103a2cd2d0a1ea076add9de8ece43934aa496378dc5916fdb082b3f080f578a10ceafd3e50e3ec655bc0c33e35c912f6c3bceab159e8213a7
   languageName: node
   linkType: hard
 
@@ -6516,6 +6550,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ms@npm:2.0.0":
+  version: 2.0.0
+  resolution: "ms@npm:2.0.0"
+  checksum: 10c0/f8fda810b39fd7255bbdc451c46286e549794fcc700dc9cd1d25658bbc4dc2563a5de6fe7c60f798a16a60c6ceb53f033cb353f493f0cf63e5199b702943159d
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.1.2":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -6568,16 +6609,19 @@ __metadata:
     "@nestjs/testing": "npm:^11.0.1"
     "@swc/cli": "npm:^0.6.0"
     "@swc/core": "npm:^1.10.7"
+    "@types/exif": "npm:^0"
     "@types/express": "npm:^5.0.0"
     "@types/jest": "npm:^29.5.14"
     "@types/multer": "npm:^1.4.12"
-    "@types/node": "npm:^22.10.7"
+    "@types/node": "npm:^22.14.0"
     "@types/supertest": "npm:^6.0.2"
     concurrently: "npm:^8.2.2"
     dotenv: "npm:^16.4.7"
     eslint: "npm:^9.18.0"
     eslint-config-prettier: "npm:^10.0.1"
     eslint-plugin-prettier: "npm:^5.2.2"
+    exif: "npm:^0.6.0"
+    exif-parser: "npm:^0.1.12"
     globals: "npm:^15.14.0"
     jest: "npm:^29.7.0"
     mongoose: "npm:^8.13.1"

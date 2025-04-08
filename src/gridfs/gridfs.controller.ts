@@ -49,4 +49,14 @@ export class GridFsController {
     const files = await this.gridFsService.listFiles();
     return files;
   }
+
+  @Get('metadata/:filename')
+  async getImageMetadata(@Param('filename') filename: string) {
+    return await this.gridFsService.getImageMetadata(filename);
+  }
+
+  @Get('metadata-by-dimension/:dimension')
+  async getImageMetadataByDimension(@Param('dimension') dimension: string) {
+    return await this.gridFsService.getImageMetadataByDimension(dimension);
+  }
 }
