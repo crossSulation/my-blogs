@@ -1,0 +1,7 @@
+torch
+torchvision
+flask
+pillow
+pymongo
+opencv-python
+scikit-learn

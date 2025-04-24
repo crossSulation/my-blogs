@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import ImagePreviewComponent from './ImagePreviewComponent';
 import { getImageList, getImageMetadataByDimension } from '../api';
 import CanvasEditor from './CanvasEditor';
 import { DatePicker } from 'antd';
@@ -42,7 +43,7 @@ const ImageGallery = () => {
   const handleDateChange = (dates) => {
     setDateRange(dates);
     if (dates && dates[0] && dates[1]) {
-      const filteredImages = images.filter(image => {
+      const filteredImages = images.filter((image) => {
         const uploadDate = new Date(image.uploadDate);
         return uploadDate >= dates[0] && uploadDate <= dates[1];
       });
@@ -52,12 +53,15 @@ const ImageGallery = () => {
     }
   };
 
-  const onFilerChange = useCallback(async (e) => {
-    setFilter(e.target.value);
-    const metadata = await getImageMetadataByDimension(e.target.value);
-    const currentGroup = {[e.target.value]: metadata.values()};
-    setGroupedImages(Object.assign({}, groupedImages, currentGroup));
-  }, [groupedImages]);
+  const onFilerChange = useCallback(
+    async (e) => {
+      setFilter(e.target.value);
+      const metadata = await getImageMetadataByDimension(e.target.value);
+      const currentGroup = { [e.target.value]: metadata.values() };
+      setGroupedImages(Object.assign({}, groupedImages, currentGroup));
+    },
+    [groupedImages],
+  );
   return (
     <div className="image-gallery">
       <h2>图片库</h2>
@@ -129,11 +133,10 @@ const ImageGallery = () => {
           </div>
         ))}
         {previewImage && (
-          <div className="preview-modal" onClick={() => setPreviewImage(null)}>
-            <div className="preview-content">
-              <img src={previewImage} alt="Preview" />
-            </div>
-          </div>
+          <ImagePreviewComponent
+            currentImage={previewImage}
+            onClose={() => setPreviewImage(null)}
+          />
         )}
         {canvasImage && (
           <CanvasEditor
